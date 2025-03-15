@@ -10,7 +10,7 @@ import healthcare from "../assets/images/healthcare.png";
 import seo from "../assets/images/seo.png";
 import design from "../assets/images/web-design.png";
 export default function Home() {
-
+    const [categorysummary,setcategory]=useState([])
     const [jobs,setJobs]=useState([])
     async  function fetchJobs(){
 
@@ -37,8 +37,32 @@ export default function Home() {
     useEffect(() => {
         fetchJobs(); //
     }, []);
+    async  function fetchCategory(){
 
+        let item = {
+            key:"value"
+        };
+        let response2=await fetch("http://127.0.0.1:8000/api/Jobsummary",{
+            method:'POST',
+            body: JSON.stringify(item),
+            headers: {
+                "Content-Type":"application/json",
+                "Accept":"application/json"
+            }
 
+        });
+
+        let  result2 = await response2.json();
+        // console.log(result);
+        console.warn("the category summary",result2)
+        setcategory(result2);
+
+    }
+    useEffect(() => {
+            fetchCategory();
+        },[]);
+        console.log(jobs);
+        console.log(categorysummary);
 
     return (
     <Fragment>
@@ -63,32 +87,18 @@ export default function Home() {
 
                 <h4 className="text-center  p-3" id="title">Explore Job Categories</h4>
                 <div className="d-flex justify-content-around p-3" id="category-container">
+                    {categorysummary.length > 0 ? (
+                            categorysummary.map((category, index) => (
                     <div id="category-box" className="object-fit-cover border rounded p-3">
                         <img src={computer}  alt="..."/>
-                        <h5>Technology</h5>
-                        <h6>1,204 jobs</h6>
+                        <h5>{category.category_name}</h5>
+                        <h6>{category.job_count} Jobs</h6>
 
                     </div>
-                    <div id="category-box" className="object-fit-cover border rounded p-3">
-                        <img src={bars}  alt="..."/>
-                        <h5>Finance</h5>
-                        <h6>204 jobs</h6>
-                    </div>
-                    <div id="category-box" className="object-fit-cover border rounded p-3">
-                        <img src={design}  alt="..."/>
-                        <h5>Design</h5>
-                        <h6>504 jobs</h6>
-                    </div>
-                    <div id="category-box" className="object-fit-cover border rounded p-3">
-                        <img src={healthcare}  alt="..."/>
-                        <h5>Healthcare</h5>
-                        <h6>1,554 jobs</h6>
-                    </div>
-                    <div id="category-box" className="object-fit-cover border rounded p-3">
-                        <img src={business}  alt="..."/>
-                        <h5>Business</h5>
-                        <h6>1,734 jobs</h6>
-                    </div>
+                                ))): (
+                        <p>No category found.</p>
+                    )}
+
 
                 </div>
                 <h6 className="text-center bg-white p-3 "><span className="btn text-info"> View all categories -></span></h6>
@@ -136,6 +146,8 @@ export default function Home() {
     </Fragment>
     );
 }
+
+
 
 
 
