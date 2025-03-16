@@ -1,0 +1,3 @@
+export default function Post_a_Job(){
+    return(<h1>Welcome to  page</h1>)
+}
