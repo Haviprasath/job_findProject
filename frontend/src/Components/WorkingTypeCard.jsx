@@ -1,8 +1,6 @@
-
 import React from 'react';
 
-
-    function WorkingTypeCard (){
+const WorkingTypeCard = () => {
   return (
     <div className="bg-white p-6 rounded-lg shadow-lg col-span-2 lg:col-span-1">
       <div className="flex items-center justify-between mb-4">
@@ -25,6 +23,6 @@ import React from 'react';
       <div className="text-gray-500">WFH applicants</div>
     </div>
   );
-}
+};
 
 export default WorkingTypeCard;

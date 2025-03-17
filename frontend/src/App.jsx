@@ -13,7 +13,7 @@ const App = () => {
       <div className="flex flex-1">
         <Sidebar />
         <div className="flex-1 p-4 bg-white">
-         
+          {/* Render DashboardCards here */}
           <DashboardCards />
         </div>
       </div>
