@@ -4,9 +4,9 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Footer from './components/Footer';
 import DashboardCards from './components/DashboardCards';
-import './assets/css/style.css'; // Import the CSS file
+import './Assest/css/style.css'; // Import the CSS file
 
-const App = () => {
+function  App () {
   return (
     <div className="bg-gray-100 h-screen flex flex-col">
       <Navbar />

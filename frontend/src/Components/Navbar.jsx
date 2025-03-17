@@ -4,7 +4,7 @@ import React from 'react';
 const Navbar = () => {
   return (
     <div className="navbar">
-      <div className="navbar-logo">JObie</div>
+      <div className="navbar-logo"  style={{ color: '#000AFF' }}>JObie</div>
       <div className="navbar-actions">
         <button className="btn">Post a Job</button>
         <i className="fas fa-bell text-xl"></i>

@@ -1,0 +1,19 @@
+/* style.css example */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: #000AFF;
+    color: white;
+    padding: 20px;
+  }
+  
+  .btn {
+    background-color: #fff;
+    color: #000AFF;
+    border: 1px solid #000AFF;
+    padding: 10px 20px;
+  }
+  
