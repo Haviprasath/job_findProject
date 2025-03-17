@@ -1,38 +1,89 @@
-.App {
-  text-align: center;
+/* App.css */
+
+/* Body styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Global container styles */
+.bg-gray-100 {
+  background-color: #f7fafc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Full screen height */
+.h-screen {
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Flexbox container */
+.flex {
   display: flex;
+}
+
+/* Column layout for the entire app */
+.flex-col {
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 250px;
+  background-color: #1a202c; /* Dark background for sidebar */
+  color: white;
+  padding: 1rem;
+}
+
+.sidebar .nav-item {
+  margin: 10px 0;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #2d3748; /* Dark background for navbar */
+  padding: 1rem;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navbar h1 {
+  font-size: 1.5rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* Footer styles */
+.footer {
+  background-color: #2d3748; /* Dark background for footer */
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Main content styles */
+.main-content {
+  padding: 20px;
+}
+
+/* Cards Container */
+.dashboard-cards {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Example of card styles */
+.dashboard-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: calc(33% - 20px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-card {
+    width: 100%;
   }
 }

@@ -1,10 +1,10 @@
 // App.js
-import React from "react";
-import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
-import Footer from "./components/Footer";
-import DashboardCards from "./components/DashboardCards"; // Import the DashboardCards component
-import './App.css';
+import React from 'react';
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import Footer from './components/Footer';
+import DashboardCards from './components/DashboardCards';
+import './assets/css/style.css'; // Import the CSS file
 
 const App = () => {
   return (
@@ -13,7 +13,6 @@ const App = () => {
       <div className="flex flex-1">
         <Sidebar />
         <div className="flex-1 p-4 bg-white">
-          {/* Render DashboardCards here */}
           <DashboardCards />
         </div>
       </div>
