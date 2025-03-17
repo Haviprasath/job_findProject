@@ -3,15 +3,13 @@
 import React,{useState,useEffect} from "react";
 import {Fragment} from "react";
 import './Home.css';
-import computer from "../assets/images/computer.png";
-import bars from "../assets/images/bars.png";
-import business from "../assets/images/business.png";
-import healthcare from "../assets/images/healthcare.png";
-import seo from "../assets/images/seo.png";
-import design from "../assets/images/web-design.png";
+
 export default function Home() {
     const [categorysummary,setcategory]=useState([])
     const [jobs,setJobs]=useState([])
+    const [job_title,setTitle]=useState("");
+    const [location,setLocation]=useState("");
+    const  [job_type,setType]=useState("");
     async  function fetchJobs(){
 
         let item = {
@@ -63,18 +61,40 @@ export default function Home() {
         },[]);
         console.log(jobs);
         console.log(categorysummary);
+    async function jobsearch(){
 
+        let item={job_title,location,job_type};
+        console.warn(job_title,location,job_type);
+        let result=await fetch("http://127.0.0.1:8000/api/Jobsearch",{
+                method:'POST',
+                body:JSON.stringify(item),
+                headers:{
+                "Content-Type":"application/json",
+                    "Accept":"application/json"
+
+            }
+
+
+        });
+          result = await result.json();
+          console.warn("the output of the search",result);
+
+    }
     return (
     <Fragment>
         <div className="container-fluid " className="homebody">
             <div className="row my-2">
                 <div className="col-8 p-3 m-3">
                     <div className="input-group">
-                        <input type="text" className="form-control" placeholder="Search a Job..." aria-label="Search"/>
-                        <input type="text" className="form-control" placeholder="Location..." aria-label="Search"/>
-                        <input type="text" className="form-select" placeholder="Job Type..."
-                               aria-label="Default select example"/>
-                        <button className="btn btn btn-primary " type="button" id="button-search">
+                        <input type="text"  value={job_title} onChange={(e)=>setTitle(e.target.value)} className="form-control" placeholder="Search a Job..." aria-label="Search"/>
+                        <input type="text" value={location} onChange={(e)=>setLocation(e.target.value)} className="form-control" placeholder="Location..." aria-label="Search"/>
+                        <select type="text" className="form-control" onChange={(e)=>setType(e.target.value)}>
+                            <option >Job Type...</option>
+                            <option value="fulltime" >Full Time</option>
+                            <option value="parttime">Part Time</option>
+                            <option value="contract">Contract</option>
+                        </select>
+                        <button className="btn btn btn-primary " type="button" id="button-search" onClick={jobsearch}>
                             Search
                         </button>
                     </div>
@@ -90,7 +110,7 @@ export default function Home() {
                     {categorysummary.length > 0 ? (
                             categorysummary.map((category, index) => (
                     <div id="category-box" className="object-fit-cover border rounded p-3">
-                        <img src={computer}  alt="..."/>
+                        <img src={category.img_url}  alt="..."/>
                         <h5>{category.category_name}</h5>
                         <h6>{category.job_count} Jobs</h6>
 
