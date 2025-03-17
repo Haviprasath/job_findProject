@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class category extends Model
 {
-    protected $fillable=['name','slug'];
+    protected $fillable=['name','slug','img_url'];
     public static function boot(){
         parent::boot();
         static::creating(function($category){

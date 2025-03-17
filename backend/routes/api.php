@@ -10,3 +10,4 @@ Route::get('/user', function (Request $request) {
 Route::post('Jobshow',[JobController::class,'Jobshow']);
 Route::post('JobAdd',[JobController::class,'JobAdd']);
 Route::post('Jobsummary',[JobController::class,'Jobsummary']);
+Route::post('Jobsearch',[JobController::class,'Jobsearch']);
