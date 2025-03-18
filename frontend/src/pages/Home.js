@@ -6,10 +6,12 @@ import './Home.css';
 
 export default function Home() {
     const [categorysummary,setcategory]=useState([])
-    const [jobs,setJobs]=useState([])
+    const [Alljobs,setJobs]=useState([])
+    const [searchjobs,setsearchJobs]=useState([])
     const [job_title,setTitle]=useState("");
     const [location,setLocation]=useState("");
     const  [job_type,setType]=useState("");
+    let jobs=[];
     async  function fetchJobs(){
 
         let item = {
@@ -77,8 +79,15 @@ export default function Home() {
 
         });
           result = await result.json();
+          setsearchJobs(result);
           console.warn("the output of the search",result);
 
+    }
+    if(searchjobs.length>0){
+        jobs=searchjobs;
+    }
+    else{
+        jobs=Alljobs;
     }
     return (
     <Fragment>
@@ -128,6 +137,7 @@ export default function Home() {
                     <h5>Featured Jobs</h5>
                     <h6 className="btn text-info">view all jobs-></h6>
                 </div>
+
                 {jobs.length > 0 ? (
                     jobs.map((job, index) => (
                 <div className="col-4 mb-4">
