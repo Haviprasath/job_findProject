@@ -1,0 +1,30 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  button {
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    opacity: 0.8;
+  }
+  
+  table {
+    border: 1px solid #ddd;
+  }
+  
+  table th, table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #f4f4f4;
+  }
+  
