@@ -1,13 +1,13 @@
 import React from "react";
-import Sidebar from "./Sidebar";
+
 import PieChartComponent from "./PieChartComponent";
 import ApplicantsTable from "./ApplicantsTable";
 
 const Dashboard = () => {
   return (
-    <div className="flex h-screen bg-gray-100">
+    <div className="">
       {/* Sidebar */}
-      <Sidebar />
+    
 
       {/* Main Content */}
       <div className="flex-1 p-6 overflow-auto">

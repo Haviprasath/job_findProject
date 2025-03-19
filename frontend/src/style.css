@@ -114,3 +114,7 @@ body {
   background-color: #6b7280; /* Darker gray on hover */
 }
 
+.container{
+  display: flex;
+  
+}
