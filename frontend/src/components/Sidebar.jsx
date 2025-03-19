@@ -1,15 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
+import './sidebar.css';
 
 const Sidebar = () => {
+  const [activeTab, setActiveTab] = useState("Total Applicants");
+
   return (
-    <div className="w-1/4 bg-white rounded-xl shadow-md p-4">
-      <h2 className="text-xl font-bold text-blue-600">JOBie</h2>
-      <div className="mt-4 space-y-3">
-        <button className="w-full bg-yellow-300 p-2 rounded-md font-medium">Total Applicants</button>
-        <button className="w-full bg-red-300 p-2 rounded-md font-medium">Interview Schedule</button>
-        <button className="w-full bg-gray-200 p-2 rounded-md font-medium">Profile Visited</button>
+    <div className="sidebar">
+      <h2>JOBie</h2>
+      <div className="nav-tabs">
+        <button
+          className={activeTab === "Total Applicants" ? "active" : ""}
+          onClick={() => setActiveTab("Total Applicants")}
+        >
+          Total Applicants
+        </button>
+
+        <button
+          className={activeTab === "Interview Schedule" ? "active" : ""}
+          onClick={() => setActiveTab("Interview Schedule")}
+        >
+          Interview Schedule
+        </button>
+
+        <button
+          className={activeTab === "Profile Visited" ? "active" : ""}
+          onClick={() => setActiveTab("Profile Visited")}
+        >
+          Profile Visited
+        </button>
       </div>
-      <button className="w-full bg-gray-400 p-2 rounded-md mt-6">Logout</button>
+
+      {/* Logout Button */}
+      <button className="logout-btn">Logout</button>
     </div>
   );
 };
