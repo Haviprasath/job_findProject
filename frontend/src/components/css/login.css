@@ -1,0 +1,106 @@
+.loginBack{
+    background-color: #2222;
+    width: 100%;
+    height: 100vh;
+   
+}
+.logoareaLogin{
+    
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 60vh;
+    position: absolute;
+    top: -2px;
+    right: 0px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
+.outlineBorder{
+    width: 50%;
+    height: 60vh;
+    border:2px solid rgba(0, 0, 0, 0);
+    border-radius: 25px;
+    position: absolute;
+    left: 25%;
+    top: 20vh;
+    background-color: white;
+}
+.loginForm{
+    align-self: auto;
+    margin-top: 10vh;
+}
+.loginForm>h1{
+    margin-left: 20%;
+    font-size: 30px;    
+}
+.loginForm>p{
+    margin-left: 11%;
+}
+.loginForm>input{
+    margin-left: 9%;
+    width:35%;
+    margin-bottom: 15px;
+    border-color: transparent;
+    background-color: #F0EDFF;
+    border-radius: 16px;
+    padding-left: 20px;
+    color: #1c1c1caf;
+    height: 40px;
+}
+.loginForm>button{
+    margin-left: 20%;
+    border-radius: 5px;
+    padding: 5px 10px 5px 10px ;
+    border-color: transparent;
+    font-size: 13px;
+    font-weight: bold;
+
+    background: hsla(54, 86%, 59%, 1);
+
+background: linear-gradient(90deg, hsla(54, 86%, 59%, 1) 25%, hsla(126, 83%, 57%, 1) 100%);
+
+background: -moz-linear-gradient(90deg, hsla(54, 86%, 59%, 1) 25%, hsla(126, 83%, 57%, 1) 100%);
+
+background: -webkit-linear-gradient(90deg, hsla(54, 86%, 59%, 1) 25%, hsla(126, 83%, 57%, 1) 100%);
+
+filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F0DE3F", endColorstr="#38ED4A", GradientType=1 );
+}
+
+.loginForm>button:hover{
+    opacity: 80%;
+}
+
+.blurArea{
+    height: 46vh;
+    width: 60%;
+    background-color: #ffffff;
+    opacity: 16%;
+    margin-left: 20%;
+    margin-top: 8vh;
+    border-radius: 46px;
+    
+    
+}
+.blurArea:before {
+    box-shadow: inset 0 0 2000px rgba(255, 255, 255, .5);
+    filter: blur(10px);
+}
+
+.logoVanni{
+    width: 50%;
+    position: absolute;
+    top: 40%;
+    right: 0;
+}
+.labelLogin:visited{
+    color: black;
+}
+.labelLogin>p{
+    padding-left: 20%;
+    padding-top: 2%;
+}
+.labelLogin label{
+    font-weight: bold;
+}
