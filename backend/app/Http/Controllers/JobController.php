@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\post_jobs;
+use App\Models\company;
 use App\Models;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
@@ -68,6 +69,19 @@ class JobController extends Controller
         }
 
         return $jobs;
+    }
+    function JobSearchById($id)
+    {
+
+       $job=post_jobs::find($id);
+        return $job;
+    }
+    function CompanyDetails($company_name){
+        $data=company::where('name',$company_name)->first();
+
+            $data->logo = url("images/{$data->logo}");
+
+        return $data;
     }
 
 }

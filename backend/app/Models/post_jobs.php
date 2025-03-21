@@ -7,7 +7,7 @@ use Illuminate\Support\Str;
 
 class post_jobs extends Model
 {
-    protected $fillable=['title','company','location','salary','job_type','description','category_id'];
+    protected $fillable=['title','company','location','salary','job_type','role_overview','category_id','offers','role_requirements','key_responsibilities'];
     public static function boot (){
         parent::boot();
         static::creating(function($post_jobs){
