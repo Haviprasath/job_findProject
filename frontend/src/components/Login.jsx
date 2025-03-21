@@ -15,7 +15,7 @@ export default function Login()
           <input type='text' className='fa' placeholder='&#xf007; Username'/><br/>
           <input type='password' className='fa' placeholder='&#xf023; Password'/><br/>
           <button className='loginButton'>Login Now</button>
-          <a href='/register' className='labelLogin'><p><label>SignUp</label>  Here</p></a>
+          <a href='Signup.jsx' className='labelLogin'><p><label>SignUp</label>  Here</p></a>
         </form>
         <span className='logoareaLogin'>
           <div className='blurArea'>
