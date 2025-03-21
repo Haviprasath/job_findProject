@@ -1,117 +1,140 @@
 /* Sidebar Default (For Large Screens) */
 .sidebar {
-    width: 25%;
-    min-width: 250px;
-    max-width: 300px;
-    height: 100vh;
+  width: 25%;
+  min-width: 250px;
+  max-width: 300px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease-in-out;
+  z-index: 1050;
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 16px;
+}
+
+/* Sidebar Navigation Links */
+.sidebar .nav .sidebar-btn {
+  width: 100%;
+  text-align: left;
+  border: none;
+  color: black;
+  padding: 10px 16px;
+  border-radius: 4px;
+  transition: background 0.3s;
+  background-color: #f1f1f1;
+  text-decoration: none;
+}
+
+.sidebar .nav .sidebar-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .nav .sidebar-btn.active {
+  background: #007bff;
+  color: white;
+}
+
+/* Logout Button */
+.sidebar .logout-btn {
+  width: 100%;
+  padding: 14px;
+  background: #dc3545;
+  color: white;
+  text-align: center;
+  border: none;
+  transition: background 0.3s;
+}
+
+.sidebar .logout-btn:hover {
+  background: #c82333;
+}
+
+/* Scrollbar Customization */
+.sidebar-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-menu::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.sidebar-menu::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Small Screens (Sidebar Hidden by Default) */
+@media (max-width: 767px) {
+  .sidebar {
+    width: 250px;
+    transform: translateX(-100%);
     position: fixed;
-    top: 0;
-    left: 0;
-    background: #212529;
-    display: flex;
-    flex-direction: column;
     transition: transform 0.3s ease-in-out;
-    z-index: 1050;
   }
-  
-  /* Sidebar Header */
-  .sidebar-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 16px;
-    border-bottom: 1px solid #444;
+
+  .sidebar.open {
+    transform: translateX(0);
   }
-  
-  /* Sidebar Menu */
-  .sidebar-menu {
-    flex-grow: 1;
-    overflow-y: auto;
-    padding: 16px;
+}
+
+/* Overlay (For Small Screens) */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+/* Large Screens: Sidebar Always Visible */
+@media (min-width: 768px) {
+  .sidebar {
+    position: static;
+    width: 25%;
+    max-width: 300px;
   }
-  
-  /* Sidebar Buttons */
-  .sidebar .nav .sidebar-btn {
-    width: 100%;
-    text-align: left;
-    
-    border: none;
-    color: black;
-    padding: 10px 16px;
-    border-radius: 4px;
-    transition: background 0.3s;
-    background-color: #f1f1f1;
-  }
-  
-  .sidebar .nav .sidebar-btn:hover {
-    background: #0174ef;
-    color: white;
-  }
-  
-  .sidebar .nav .sidebar-btn.active {
-    background: #007bff;
-    color: white;
-  }
-  
-  /* Logout Button */
-  .sidebar .logout-btn {
-    width: 100%;
-    padding: 14px;
-    background: #dc3545;
-    color: white;
-    text-align: center;
-    border: none;
-    transition: background 0.3s;
-  }
-  
-  .sidebar .logout-btn:hover {
-    background: #c82333;
-  }
-  
-  /* Scrollbar Customization */
-  .sidebar-menu::-webkit-scrollbar {
-    width: 6px;
-  }
-  
-  .sidebar-menu::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 3px;
-  }
-  
-  .sidebar-menu::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  
-  /* Small Screens (Sidebar Hidden by Default) */
-  @media (max-width: 767px) {
-    .sidebar {
-      width: 250px;
-      transform: translateX(-100%);
-      position: fixed;
-      transition: transform 0.3s ease-in-out;
-    }
-  
-    .sidebar.open {
-      transform: translateX(0);
-    }
-  }
-  
-  /* Overlay (For Small Screens) */
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    z-index: 1040;
-  }
-  
-  /* Large Screens: Sidebar Always Visible */
-  @media (min-width: 768px) {
-    .sidebar {
-      position: static;
-      width: 25%;
-      max-width: 300px;
-    }
-  }
+}
+
+/* Header with Profile */
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 60px;
+  background: white;
+  z-index: 1060;
+}
+
+/* Profile */
+.profile {
+  position: relative;
+}
+
+.profile-img {
+  width: 530px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}
