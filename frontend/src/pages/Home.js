@@ -3,6 +3,9 @@
 import React,{useState,useEffect} from "react";
 import {Fragment} from "react";
 import './Home.css';
+import {Link} from "react-router-dom";
+import {Route,Routes} from "react-router-dom";
+import Description from "./Description";
 
 export default function Home() {
     const [categorysummary,setcategory]=useState([])
@@ -146,9 +149,9 @@ export default function Home() {
                         <div className="card-body">
                             <div className="row">
 
-                                        {/*<div className="col-md-4">*/}
-                                        {/*    <img src="" className="img-fluid" alt="..."/>*/}
-                                        {/*</div>*/}
+                                        <div className="col-md-4">
+                                            <img src="" className="img-fluid" alt="..."/>
+                                        </div>
                                             <div className="col-md-8">
                                                 <h5 className="card-title">{job.title}</h5>
                                                 <p className="card-text">{job.company} Pvt.Ltd</p>
@@ -158,7 +161,10 @@ export default function Home() {
                                             </div>
                                             <div className="d-flex justify-content-between">
                                                 <a >{job.created_at}</a>
-                                                <a className="text-decoration-none text-dark fw-bold" href="#">Apply now</a>
+                                              <Link to={`description/${job.id}`}>
+                                                        <a className="text-decoration-none text-dark fw-bold" href="" >Apply now</a>
+                                              </Link>
+
                                             </div>
 
 
@@ -172,6 +178,23 @@ export default function Home() {
                     <p>No jobs found.</p>
                 )}
             </div>
+            <div className="row m-3">
+                <div className="col-8">
+
+                </div>
+                <div className="col-4 center">
+                    <nav aria-label="Page navigation example">
+                        <ul className="pagination justify-content-center">
+                            <li className="page-item"><a className="page-link" href="#">Previous</a></li>
+                            <li className="page-item"><a className="page-link" href="#">1</a></li>
+                            <li className="page-item"><a className="page-link" href="#">2</a></li>
+                            <li className="page-item"><a className="page-link" href="#">3</a></li>
+                            <li className="page-item"><a className="page-link" href="#">Next</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
         </div>
     </Fragment>
     );

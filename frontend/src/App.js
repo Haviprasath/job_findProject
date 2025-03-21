@@ -7,9 +7,11 @@ import Contact from "./pages/Contact";
 import Login from "./pages/Login"
 import Register from "./pages/Register";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Description from "./pages/Description";
 function App() {
   return (
     <div className="App">
+
         <BrowserRouter>
             <Header />
             <Routes>
@@ -18,6 +20,7 @@ function App() {
                 <Route path="/contact"  element={<Contact />}></Route>
                 <Route path="/login"  element={<Login />}></Route>
                 <Route path="/reg"  element={<Register />}></Route>
+                <Route path="home/description/:id" element={<Description />}></Route>
             </Routes>
 
         </BrowserRouter>
