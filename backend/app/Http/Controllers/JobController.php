@@ -23,7 +23,14 @@ class JobController extends Controller
 
   }
     function Jobshow(){
-       $jobs=post_jobs::all();
+       $jobs=DB::table('post_jobs')
+           ->join('companies','companies.name','=','post_jobs.company')
+           ->select('post_jobs.id','title','location','companies.name','companies.logo','salary','job_type','post_jobs.created_at')
+           ->get();
+       foreach($jobs as $job){
+           $job->logo = url("images/{$job->logo}");
+       }
+
         return $jobs;
 
     }
@@ -43,37 +50,46 @@ class JobController extends Controller
         $location = $req->input('location');
         $title = $req->input('job_title');
         $job_type = $req->input('job_type');
+        $jobs=DB::table('post_jobs')
+            ->join('companies','companies.name','=','post_jobs.company')
+            ->select('post_jobs.id','title','location','companies.name','companies.logo','salary','job_type','post_jobs.created_at');
+
         if (!empty($location) and !empty($job_type) and !empty($title)) {
-            $jobs=post_jobs::where('location',$location)->where('job_type',$job_type)->where('title',$title)->get();
+            $jobs->where('location',$location)->where('job_type',$job_type)->where('title',$title);
         }
         elseif (!empty($location) and !empty($job_type)) {
-            $jobs=post_jobs::where('location',$location)->where('job_type',$job_type)->get();
+            $jobs->where('location',$location)->where('job_type',$job_type);
         }
         elseif (!empty($location) and !empty($title)) {
-            $jobs=post_jobs::where('location',$location)->where('title',$title)->get();
+            $jobs->where('location',$location)->where('title',$title);
         }
         elseif (!empty($title) and !empty($job_type)) {
-            $jobs=post_jobs::where('title',$title)->where('job_type',$job_type)->get();
+            $jobs->where('title',$title)->where('job_type',$job_type);
         }
         elseif (!empty($title)) {
-            $jobs=post_jobs::where('title',$title)->get();
+            $jobs->where('title',$title);
         }
         elseif (!empty($job_type)) {
-            $jobs=post_jobs::where('job_type',$job_type)->get();
+            $jobs->where('job_type',$job_type);
         }
         elseif(!empty($location)){
-            $jobs=post_jobs::where('location',$location)->get();
+            $jobs->where('location',$location);
         }
         else{
             $jobs="No found....!!!";
         }
 
+       $jobs=$jobs->get();
+        foreach($jobs as $job){
+            $job->logo = url("images/{$job->logo}");
+        }
         return $jobs;
     }
     function JobSearchById($id)
     {
 
        $job=post_jobs::find($id);
+
         return $job;
     }
     function CompanyDetails($company_name){

@@ -12,7 +12,7 @@ class post_jobs extends Model
         parent::boot();
         static::creating(function($post_jobs){
             $categoryMapping = [
-                'Technology' => ['software engineer', 'developer', 'engineer'],
+                'Technology' => ['software engineer', 'developer', 'engineer','intern'],
                 'Finance' => ['accountant', 'finance', 'analyst'],
                 'Marketing' => ['marketing', 'seo', 'advertising'],
                 'healthcare' => ['doctor', 'nurse', ],
