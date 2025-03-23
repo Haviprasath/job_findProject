@@ -6,92 +6,70 @@ import './Home.css';
 import {Link} from "react-router-dom";
 import {Route,Routes} from "react-router-dom";
 import Description from "./Description";
+import {fetchJobs} from "../Api services/fetchjob";
+import {fetchCategory} from "../Api services/fetchCategory";
+import {jobsearch} from "../Api services/jobsearch";
+import {CompanyDetails} from "../Api services/CompanyDetails";
 
 export default function Home() {
     const [categorysummary,setcategory]=useState([])
     const [Alljobs,setJobs]=useState([])
     const [searchjobs,setsearchJobs]=useState([])
+    const [company,setCompany]=useState([]);
     const [job_title,setTitle]=useState("");
     const [location,setLocation]=useState("");
     const  [job_type,setType]=useState("");
-    let jobs=[];
-    async  function fetchJobs(){
-
-        let item = {
-            key:"value"
-        };
-        let response=await fetch("http://127.0.0.1:8000/api/Jobshow",{
-                method:'POST',
-                body: JSON.stringify(item),
-                headers: {
-                    "Content-Type":"application/json",
-                    "Accept":"application/json"
-                }
-
-            });
-
-             let  result = await response.json();
-              // console.log(result);
-            console.warn("this data fetch from backend result",result)
-             setJobs(result);
+    let company_names=[];
+    let jobs=[]; let index=0;
 
 
-        }
     useEffect(() => {
-        fetchJobs(); //
+        fetchJobs().then(setJobs).catch(console.error);
     }, []);
-    async  function fetchCategory(){
+    jobs=Alljobs;
 
-        let item = {
-            key:"value"
-        };
-        let response2=await fetch("http://127.0.0.1:8000/api/Jobsummary",{
-            method:'POST',
-            body: JSON.stringify(item),
-            headers: {
-                "Content-Type":"application/json",
-                "Accept":"application/json"
-            }
-
-        });
-
-        let  result2 = await response2.json();
-        // console.log(result);
-        console.warn("the category summary",result2)
-        setcategory(result2);
-
-    }
     useEffect(() => {
-            fetchCategory();
+            fetchCategory().then(setcategory).catch(console.error);
         },[]);
-        console.log(jobs);
-        console.log(categorysummary);
-    async function jobsearch(){
 
-        let item={job_title,location,job_type};
-        console.warn(job_title,location,job_type);
-        let result=await fetch("http://127.0.0.1:8000/api/Jobsearch",{
-                method:'POST',
-                body:JSON.stringify(item),
-                headers:{
-                "Content-Type":"application/json",
-                    "Accept":"application/json"
+    useEffect(() => {
+        if(job_title.length>0 || job_type.length>0 ||location.length>0){
+            jobsearch(job_title,job_type,location).then(setsearchJobs).catch(console.error);
+        }
+        else{
+            console.log("there is no match found");
+        }
+    }, [job_type,job_title,location]);
 
-            }
-
-
-        });
-          result = await result.json();
-          setsearchJobs(result);
-          console.warn("the output of the search",result);
-
-    }
-    if(searchjobs.length>0){
+    if (searchjobs.length>0){
         jobs=searchjobs;
     }
     else{
-        jobs=Alljobs;
+        console.warn("there is no match found")
     }
+    //
+    // if(jobs.length>0){
+    //         jobs.forEach(CompanyName);
+    // }
+    //
+    // function  CompanyName(job){
+    //     company_names[index]=job.company;
+    //      console.log('the company is:',company_names[index]);
+    //      index++;
+    // }
+    // useEffect(()=>{
+    //     if (company_names.length > 0) {
+    //         Promise.all(company_names.map(CompanyDetails))
+    //             .then(setCompany)
+    //             .catch(console.error);
+    //     }
+    //
+    // },[JSON.stringify(company_names)]);
+
+
+
+
+
     return (
     <Fragment>
         <div className="container-fluid " className="homebody">
@@ -110,7 +88,14 @@ export default function Home() {
                             Search
                         </button>
                     </div>
-                    <div  id="col-4">
+
+                    <div  className="col-4">
+                        {(searchjobs.length>0)?(
+
+                        <p className="alert alert-primary " role="alert ">job is found</p> ):
+                            (
+                        <p class="alert alert-danger" role="alert">No job is  found</p>)
+                    }
 
                     </div>
                 </div>
@@ -141,22 +126,25 @@ export default function Home() {
                     <h6 className="btn text-info">view all jobs-></h6>
                 </div>
 
-                {jobs.length > 0 ? (
+                {jobs.length > 0 && company ? (
                     jobs.map((job, index) => (
+
                 <div className="col-4 mb-4">
                     <div className="card">
 
                         <div className="card-body">
                             <div className="row">
-
                                         <div className="col-md-4">
-                                            <img src="" className="img-fluid" alt="..."/>
+                                            <img src={job.logo} className="img-fluid" alt={job.name} />
+
+
                                         </div>
+
                                             <div className="col-md-8">
                                                 <h5 className="card-title">{job.title}</h5>
-                                                <p className="card-text">{job.company} Pvt.Ltd</p>
-                                                <p className="card-text">{job.jobType}</p>
-                                                <div className="">{job.location} Rs.{job.salary}</div>
+                                                <p className="card-text">{job.name} Pvt.Ltd</p>
+                                                <p className="card-text">{job.job_type}</p>
+                                                <div className="">{job.location}</div>
 
                                             </div>
                                             <div className="d-flex justify-content-between">
@@ -173,6 +161,7 @@ export default function Home() {
 
                     </div>
                 </div>
+
                     ))
                 ) : (
                     <p>No jobs found.</p>

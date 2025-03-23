@@ -2,6 +2,8 @@
 import {useParams} from "react-router-dom";
 import {render} from "@testing-library/react";
 import {Fragment, useEffect, useState} from "react";
+import {CompanyDetails} from "../Api services/CompanyDetails";
+import {particularjob} from "../Api services/particularjob";
 
 export default function Description() {
     const {id}=useParams();
@@ -9,54 +11,19 @@ export default function Description() {
     const [company,setCompany]=useState([]);
     const [job,setJob]=useState([]);
     let company_name='';
-    console.log();
-     async function particularjob(){
-         try {
-             let response=await fetch(`http://127.0.0.1:8000/api/JobSearchById/${job_id}`,{
-                 method:'GET',
-                 headers:{
-                     "content-type":"application/json",
-                     "Accept":"application/json"
-                 }
-             });
-             let result=await response.json();
-             setJob(result);
-             console.warn('the particular job',result);
-         }
-        catch (error){
-             console.error("Error fetching job:", error);
-        }
-     }
+
+
 
     useEffect(() => {
-        particularjob();
+        particularjob(job_id).then(setJob).catch(console.error);
     }, []);
-
-    async function CompanyDetails(){
-            try {
-
-               console.warn("Fetching company details for:",job.company);
-                let response2 = await fetch(`http://127.0.0.1:8000/api/CompanyDetails/${job.company}`, {
-                    method: 'GET',
-                    headers: {
-                        "content-type": "application/json",
-                        "Accept": "application/json"
-                    }
-                });
-                let result2 = await response2.json();
-                console.warn('the company details', result2);
-                setCompany(result2);
-            }
-            catch (error){
-                console.log(error);
-            }
-
-    }
 
     console.warn('the company details',company);
     useEffect(() => {
-        if (job && job.company) {
-            CompanyDetails();
+        let company_name=job.company;
+        if (job && company_name) {
+
+            CompanyDetails(company_name).then(setCompany).catch(console.error);
         }
 
     }, [job]);
