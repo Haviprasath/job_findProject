@@ -19,6 +19,7 @@ export default function Home() {
     const [job_title,setTitle]=useState("");
     const [location,setLocation]=useState("");
     const  [job_type,setType]=useState("");
+    const [CurrentPageJob,setPageJob]=useState([]);
     let company_names=[];
     let jobs=[]; let index=0;
 
@@ -32,14 +33,14 @@ export default function Home() {
             fetchCategory().then(setcategory).catch(console.error);
         },[]);
 
-    useEffect(() => {
-        if(job_title.length>0 || job_type.length>0 ||location.length>0){
-            jobsearch(job_title,job_type,location).then(setsearchJobs).catch(console.error);
-        }
-        else{
-            console.log("there is no match found");
-        }
-    }, [job_type,job_title,location]);
+    // useEffect(() => {
+    //     if(job_title.length>0 || job_type.length>0 ||location.length>0){
+    //         jobsearch(job_title,job_type,location).then(setsearchJobs).catch(console.error);
+    //     }
+    //     else{
+    //         console.log("there is no match found");
+    //     }
+    // }, [job_type,job_title,location]);
 
     if (searchjobs.length>0){
         jobs=searchjobs;
@@ -47,25 +48,26 @@ export default function Home() {
     else{
         console.warn("there is no match found")
     }
-    //
-    // if(jobs.length>0){
-    //         jobs.forEach(CompanyName);
-    // }
-    //
-    // function  CompanyName(job){
-    //     company_names[index]=job.company;
-    //      console.log('the company is:',company_names[index]);
-    //      index++;
-    // }
-    // useEffect(()=>{
-    //     if (company_names.length > 0) {
-    //         Promise.all(company_names.map(CompanyDetails))
-    //             .then(setCompany)
-    //             .catch(console.error);
-    //     }
-    //
-    // },[JSON.stringify(company_names)]);
 
+    let PageNumber=1;
+    let JobPerPage=3;
+    let No_of_Pages=Math.ceil(jobs.length/JobPerPage);
+    let pages=[];
+    for(let i=1;i<=No_of_Pages;i++){
+        pages.push(i);
+    }
+    console.log("pages array:",pages);
+
+    function pagination(e){
+         PageNumber=e.target.textContent;
+         console.log("the page number is:",PageNumber);
+        setPageJob(jobs.slice((PageNumber-1)*JobPerPage,PageNumber*JobPerPage));
+
+    }
+
+    useEffect(() => {
+        setPageJob(jobs.slice(0,3));
+    }, [jobs]);
 
 
 
@@ -84,7 +86,14 @@ export default function Home() {
                             <option value="parttime">Part Time</option>
                             <option value="contract">Contract</option>
                         </select>
-                        <button className="btn btn btn-primary " type="button" id="button-search" onClick={jobsearch}>
+                        <button className="btn btn btn-primary " type="button" id="button-search" onClick={()=> {
+                            if (job_title.length > 0 || job_type.length > 0 || location.length > 0) {
+                                jobsearch(job_title, job_type, location).then(setsearchJobs).catch(console.error);
+                            } else {
+                                console.log("there is no match found");
+                            }
+                        }
+                            }>
                             Search
                         </button>
                     </div>
@@ -126,10 +135,10 @@ export default function Home() {
                     <h6 className="btn text-info">view all jobs-></h6>
                 </div>
 
-                {jobs.length > 0 && company ? (
-                    jobs.map((job, index) => (
+                {CurrentPageJob.length > 0 && company ? (
+                    CurrentPageJob.map((job, index) => (
 
-                <div className="col-4 mb-4">
+                    <div className="col-4 mb-4">
                     <div className="card">
 
                         <div className="card-body">
@@ -175,9 +184,12 @@ export default function Home() {
                     <nav aria-label="Page navigation example">
                         <ul className="pagination justify-content-center">
                             <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-                            <li className="page-item"><a className="page-link" href="#">1</a></li>
-                            <li className="page-item"><a className="page-link" href="#">2</a></li>
-                            <li className="page-item"><a className="page-link" href="#">3</a></li>
+                            {pages.length > 0 && company ? (
+                                   pages.map((page, index) => (
+                                       <li className="page-item"><a className="page-link" href="#" onClick={pagination}>{page}</a></li>
+                                   ))) : (
+                    <p>No pages found.</p>
+                    )}
                             <li className="page-item"><a className="page-link" href="#">Next</a></li>
                         </ul>
                     </nav>
