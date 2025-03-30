@@ -183,7 +183,7 @@ const CreatePost = ({ setShowModal }) => {
             <button type="submit" className="submit-btn">Submit</button>
             <button
               type="button"
-              className="close-btn"
+              className="close-btn-create"
               onClick={() => setShowModal(false)}
             >
               Cancel

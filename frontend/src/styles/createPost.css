@@ -62,7 +62,7 @@
   cursor: pointer;
 }
 
-.modal-buttons .close-btn {
+.modal-buttons .close-btn-create {
   background: red;
   color: white;
 }

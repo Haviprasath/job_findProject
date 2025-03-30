@@ -6,6 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 30px;
 }
 
 .header--title{
@@ -33,4 +34,62 @@
 .create-post-btn:hover {
     background: #0056b3; /* Darker blue on hover */
     transform: scale(1.05);
+}
+
+.job-table {
+    width: 100%;
+    border-collapse: collapse;
+    padding: 30px;
+  }
+  
+.job-table th, .job-table td {
+  padding: 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.company-logo {
+    width: 100px;
+    height: 100px;
+    object-fit: contain; 
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+  }
+  
+
+.view-btn, .edit-btn, .delete-btn {
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.view-btn {
+  background-color: #28a745;
+  color: white;
+}
+  
+.view-btn:hover {
+  background-color: #218838;
+}
+
+.edit-btn {
+  background-color: #ffc107;
+  color: black;
+}
+
+.edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
 }

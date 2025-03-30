@@ -1,0 +1,39 @@
+.job-details-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    width: 450px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
+  
+  .job-details-modal h2 {
+    margin-bottom: 10px;
+  }
+  
+  .job-details-content p {
+    margin: 5px 0;
+  }
+  
+  .job-details-content strong {
+    font-weight: bold;
+  }
+  
+  .close-btn {
+    background-color: #dc3545;
+    padding: 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    width: 100%;
+  }
+  
+  .close-btn:hover {
+    background-color: #c82333;
+  }
+  
