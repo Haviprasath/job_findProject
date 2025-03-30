@@ -2,26 +2,34 @@ import React from 'react'
 import {BiBookAlt, 
     BiHelpCircle, 
     BiHome, 
+    BiLogOut, 
     BiMessage, 
-    BiSolidReport, 
     BiStats, 
-    BiTask
 } from 'react-icons/bi';
+import {Link} from 'react-router-dom';
 
 import "../../styles/sidebar.css";
+import UserImage from '../../assets/userImage.jpg'
 
 const Sidebar1 = () => {
   return (
     <div className='menu'>
         <div className='logo'>
             <BiBookAlt className='logo-icon'/>
-            <h2>JObie</h2>
+            <h1>JObie</h1>
+        </div>
+        <div className="user--profile">
+            <div className="user--detail">
+                <img src={UserImage} alt="" />
+                <h3 className="username">Ragavan</h3>
+                <span className="profession">Admin 1</span>
+            </div>
         </div>
         <div className='menu--list'>
-            <a href="#" className="item active">
+            <Link to='/' className="item active">
                 <BiHome className='icon'/>
                 Dashboard
-            </a>
+            </Link>
             <a href="#" className="item">
                 <BiStats className='icon'/>
                 Stats
@@ -35,6 +43,10 @@ const Sidebar1 = () => {
                 Help
             </a>
         </div>
+        <button className="logout-btn">
+            <BiLogOut />
+            LogOut
+        </button>
     </div>
   )
 }

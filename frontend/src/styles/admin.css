@@ -1,0 +1,40 @@
+.dashboard{
+    display: flex;
+    gap: 20px;
+}
+
+.dashboard--content{
+    background: #fff;
+    flex: 1;
+    border-radius: 20px;
+    padding: 2.5rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+}
+
+.create-post-btn {
+    background: #b8c4ce;
+    padding: 12px 20px;
+    border-radius: 10px;
+    color: #3b4f63;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.create-post-btn .icon{
+    color: #969393;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.create-post-btn:hover {
+    transform: scale(1.04);
+    background: #cdd6de;
+}
