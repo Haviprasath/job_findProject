@@ -21,20 +21,7 @@ const ContentAdmin = ({ setShowModal }) => {
       applicationDeadline: "2025-06-30",
       contactInfo: "hr@360softy.com",
     },
-    {
-      id: 2,
-      jobTitle: "Data Analyst",
-      companyName: "Data Corp",
-      jobType: "Remote",
-      companyLogo: "https://via.placeholder.com/50",
-      location: "San Francisco",
-      salaryRange: "$50k - $70k",
-      jobDescription: "Analyze data and create reports.",
-      requiredSkills: "SQL, Python, Tableau",
-      experienceLevel: "Entry-Level",
-      applicationDeadline: "2025-07-15",
-      contactInfo: "jobs@datacorp.com",
-    },
+
   ]);
 
   const [showEditModal, setShowEditModal] = useState(false);
