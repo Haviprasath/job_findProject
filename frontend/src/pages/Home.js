@@ -2,7 +2,7 @@
 
 import React,{useState,useEffect} from "react";
 import {Fragment} from "react";
-import './Home.css';
+import './css/Home.css';
 import {Link} from "react-router-dom";
 import {Route,Routes} from "react-router-dom";
 import Description from "./Description";
@@ -10,6 +10,7 @@ import {fetchJobs} from "../Api services/fetchjob";
 import {fetchCategory} from "../Api services/fetchCategory";
 import {jobsearch} from "../Api services/jobsearch";
 import {CompanyDetails} from "../Api services/CompanyDetails";
+import Header from "../components/Header";
 
 export default function Home() {
     const [categorysummary,setcategory]=useState([])
@@ -73,7 +74,9 @@ export default function Home() {
 
 
     return (
+
     <Fragment>
+
         <div className="container-fluid " className="homebody">
             <div className="row my-2">
                 <div className="col-8 p-3 m-3">
@@ -158,8 +161,8 @@ export default function Home() {
                                             </div>
                                             <div className="d-flex justify-content-between">
                                                 <a >{job.created_at}</a>
-                                              <Link to={`description/${job.id}`}>
-                                                        <a className="text-decoration-none text-dark fw-bold" href="" >Apply now</a>
+                                              <Link to={`description/${job.id}`} className="text-decoration-none text-dark fw-bold">
+                                                      Apply now
                                               </Link>
 
                                             </div>

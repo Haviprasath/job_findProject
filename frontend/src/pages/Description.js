@@ -4,6 +4,7 @@ import {render} from "@testing-library/react";
 import {Fragment, useEffect, useState} from "react";
 import {CompanyDetails} from "../Api services/CompanyDetails";
 import {particularjob} from "../Api services/particularjob";
+import Modal from "../components/Modal";
 
 export default function Description() {
     const {id}=useParams();
@@ -11,7 +12,7 @@ export default function Description() {
     const [company,setCompany]=useState([]);
     const [job,setJob]=useState([]);
     let company_name='';
-
+    const [showmodal,setModal]=useState(false);
 
 
     useEffect(() => {
@@ -29,7 +30,9 @@ export default function Description() {
     }, [job]);
 
     return(
+
         <Fragment>
+
             <div className="container-fluid ">
 
                 <div className="row">
@@ -119,16 +122,22 @@ export default function Description() {
                 </div>
                 <div className="row">
                     <div className="col-lg-6">
-                        <div  className="d-grid gap-2 m-3">
-                            <button className="btn btn-lg btn-primary">Apply for this job now</button>
-                        </div>
+                        <button type="button" className="btn btn-primary" onClick={()=>{
+                            setModal(true);
+                        }}>
+                            Apply for this Job Now
+                        </button>
+
                     </div>
-                </div>
-                <div className="row">
 
                 </div>
+                <div className="row">
+                    {showmodal===true ? alert(<Modal/>) :'not working'}
+                </div>
             </div>
+
         </Fragment>
+
 
     )
 }

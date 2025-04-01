@@ -17,24 +17,20 @@ export default function Header(){
                 </div>
                 <div className="col">
                     <div className="d-flex justify-content-center gap-3">
-                         <Link to="/home">
-                             <a className="text-dark text-decoration-none btn btn-outline-primary" href="">Home</a>
+                         <Link to="home" className="text-dark text-decoration-none btn btn-outline-primary">
+                          Home
                          </Link>
-                        <Link to="/about">
-                            <a className="text-dark text-decoration-none btn btn-outline-primary"
-                               href="">About</a>
+                        <Link to="about" className="text-dark text-decoration-none btn btn-outline-primary">
+                            About
                         </Link>
-                       <Link to="contact">
-                           <a className="text-dark text-decoration-none btn btn-outline-primary"
-                              href="">Contact</a>
+                       <Link to="contact" className="text-dark text-decoration-none btn btn-outline-primary">
+                        Contact
                        </Link>
-                        <Link to="login">
-                            <a className="text-dark text-decoration-none btn btn-outline-primary"
-                               href="">Login</a>
+                        <Link to="login" className="text-dark text-decoration-none btn btn-outline-primary">
+                            Login
                         </Link>
-                        <Link to="Reg">
-                            <a className="text-dark text-decoration-none btn btn-outline-primary"
-                               href="">Register</a>
+                        <Link to="Reg" className="text-dark text-decoration-none btn btn-outline-primary">
+                         Register
                         </Link>
 
 
@@ -43,7 +39,11 @@ export default function Header(){
                     <div  id="imagebox" className="col">
 
                         <img id="image" src={firstImage} alt="A man searching a Job"     />
-                        <a type="button" className="btn btn-primary" >Post a Job</a>
+                        <Link to="admin"   className="btn btn-primary" >
+                          Post a Job
+                        </Link>
+
+
                     </div>
 
 
