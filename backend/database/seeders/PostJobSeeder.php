@@ -20,31 +20,33 @@ class PostJobSeeder extends Seeder
             'backend engineer intern',
             'accountant',
             'Marketing manager',
-            'doctor'
+            'doctor','front-end engineer',
+            'java developer'
             ];
 
         $companies=['ilabs',
             'microwe',
             '360softy',
-            'codelantic','abc','xyz','private hospital'
+            'codelantic','abc','xyz','private hospital','codelantic','ilabs'
         ];
         $locations=['colombo',
-            'jaffna','vavuniya','jaffna','colombo','colombo','trincomalee'
+            'jaffna','vavuniya','jaffna','colombo','colombo','trincomalee','jaffna','colombo'
         ];
         $salaries=[25000,
-            20000,15000,20000,200000,120000,180000
+            20000,15000,20000,200000,120000,180000,80000,100000
         ];
         $job_types=['fulltime',
-            'parttime','fulltime','fulltime','contract','fulltime','parttime'
+            'parttime','fulltime','fulltime','contract','fulltime','parttime','fulltime','fulltime'
         ];
         $role_overviews=['involving php framework',
-            'involve .net framework','php framework','java framework','business','expand the production','caring the patients'
+            'involve .net framework','php framework','java framework','business','expand the production','caring the patients','creative and attractibe design',
+            'involve high product'
         ];
         $role_requirements=['Bsc(Hons) computer science',
             'knowledge of oop','knowledge of programming and Bsc(Hons) computer science','Bsc(Hons) computer science and java framework','expereice of 2 years',
-            '2 years of experience','5 years of expereince'
+            '2 years of experience','5 years of experience','minimum 2 years of experience','spring 3 years of experience',
         ];
-        $offers=['no_offers','no_offers','tea and breakfast','no_offers','travelling expense','travelling expense', 'travelling expense', 'travelling expense'];
+        $offers=['no_offers','no_offers','tea and breakfast','no_offers','travelling expense','travelling expense', 'travelling expense', 'travelling expense','nothing','travelling expense'];
 
 
         $categoryMapping = [
@@ -53,6 +55,7 @@ class PostJobSeeder extends Seeder
             'Marketing' => ['marketing', 'seo', 'advertising'],
             'healthcare' => ['doctor', 'nurse', ],
             'design' => ['frontend', 'ui/ux', ],
+
         ];
         $category_ids=[];
         $category_names=[];

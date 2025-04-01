@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 use App\Models\post_jobs;
 use App\Models\company;
 use App\Models;
+use App\Models\User;
 use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+
 class JobController extends Controller
 {
     function JobAdd(Request $req){
@@ -16,7 +19,7 @@ class JobController extends Controller
         $jobs->salary=$req->input('salary');
         $jobs->location=$req->input('location');
         $jobs->job_type=$req->input('job_type');
-        $jobs->description=$req->input('description');
+
         $jobs->save();
         return $jobs;
 
@@ -98,6 +101,30 @@ class JobController extends Controller
             $data->logo = url("images/{$data->logo}");
 
         return $data;
+    }
+    function AddSeeker(Request $req)
+    {
+        $user=new User;
+        validator()->make($req->all(),[
+            'username'=>'required|unique:users',
+            'password'=>'required',
+            'email'=>'required|unique:users'
+        ]);
+        $user->name=$req->input('username');
+        $user->email=$req->input('email');
+        $user->password=Hash::make($req->input('password'));
+        $user->save();
+        return $user;
+    }
+    function ValidateUser(Request $req){
+        $username=$req->input('username');
+        $password=$req->input('password');
+        $user=User::where('name',$username)->first();
+         $isValid=false;
+        if(Hash::check($req->input('password'),$user->password)){
+            $isValid=true;
+        }
+        return response()->json(['success',$isValid]);
     }
 
 }
